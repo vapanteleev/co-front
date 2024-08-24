@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './MainPage.module.css';
 import { Container, Typography } from '@mui/material';
 import InputForm from '../InputForm/InputForm';
 import ProposalOutput from '../ProposalOutput/ProposalOutput';
