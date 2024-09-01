@@ -76,7 +76,7 @@ const LayerForm: React.FC<{
                 />
             </div>
 
-            <button onClick={removeLayer}>Удалить слой</button>
+            <button className={styles.styledButton} onClick={removeLayer}>Удалить слой</button>
         </div>
     );
 };

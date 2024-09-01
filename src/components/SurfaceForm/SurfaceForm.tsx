@@ -61,8 +61,8 @@ const SurfaceForm: React.FC<{
                 />
             ))}
 
-            <button onClick={addLayer}>Добавить слой</button>
-            <button onClick={removeSurface}>Удалить поверхность</button>
+            <button className={styles.styledButtonAdd} onClick={addLayer}>Добавить слой</button>
+            <button className={styles.styledButton} onClick={removeSurface}>Удалить поверхность</button>
         </div>
     );
 };

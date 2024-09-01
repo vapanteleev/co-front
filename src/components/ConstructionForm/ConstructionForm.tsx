@@ -47,7 +47,7 @@ const ConstructionForm: React.FC = () => {
                 />
             ))}
 
-            <button onClick={() => addSurface({ name: '', area: 0, layers: [] })}>Добавить поверхность</button>
+            <button className={styles.ConstructionFormFieldButton} onClick={() => addSurface({ name: '', area: 0, layers: [] })}>Добавить поверхность</button>
         </div>
     );
 };

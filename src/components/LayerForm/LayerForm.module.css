@@ -7,3 +7,53 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+.styledButton {
+    margin: 10px;
+
+    background-color: #6200ea;
+    /* Base color */
+    color: white;
+    /* Text color */
+    border: none;
+    /* Remove border */
+    border-radius: 25px;
+    /* Rounded corners */
+    padding: 12px 24px;
+    /* Padding inside button */
+    font-size: 8px;
+    /* Font size */
+    font-weight: bold;
+    /* Font weight */
+    text-transform: uppercase;
+    /* Uppercase text */
+    letter-spacing: 1px;
+    /* Space between letters */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    /* Box shadow for depth */
+    transition: all 0.3s ease;
+    /* Smooth transition */
+    outline: none;
+    /* Remove outline */
+}
+
+.styledButton:hover {
+    background-color: #3700b3;
+    /* Darker shade on hover */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    /* Deeper shadow on hover */
+    transform: translateY(-3px);
+    /* Lift button on hover */
+}
+
+.styledButton:active {
+    background-color: #6200ea;
+    /* Original color on click */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    /* Original shadow on click */
+    transform: translateY(0px);
+    /* Reset lift on click */
+}
