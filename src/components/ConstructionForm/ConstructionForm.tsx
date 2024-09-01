@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { ConstructionContext } from '../../providers/ConstructionProvider/ConstructionProvider';
 import SurfaceForm from '../SurfaceForm/SurfaceForm';
 import { Surface } from '../../model/dataModel';
