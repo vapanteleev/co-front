@@ -1,7 +1,7 @@
 import React from 'react';
 import LayerForm from '../LayerForm/LayerForm';
 import { Surface, Layer } from '../../model/dataModel';
-
+import styles from './SurfaceForm.module.css'
 const SurfaceForm: React.FC<{
     surface: Surface;
     updateSurface: (surface: Surface) => void;
@@ -33,18 +33,24 @@ const SurfaceForm: React.FC<{
     return (
         <div>
             <h3>Поверхность</h3>
-            <input
-                type="text"
-                value={surface.name}
-                onChange={handleNameChange}
-                placeholder="Название поверхности"
-            />
-            <input
-                type="number"
-                value={surface.area}
-                onChange={handleAreaChange}
-                placeholder="Площадь поверхности (м²)"
-            />
+            <div className={styles.SurfaceFormField}>
+                <span>Название поверхности</span>
+                <input
+                    type="text"
+                    value={surface.name}
+                    onChange={handleNameChange}
+                    placeholder="Название поверхности"
+                /></div>
+            <div className={styles.SurfaceFormField}>
+                <span>Площадь поверхности (м²)</span>
+
+                <input
+                    type="number"
+                    value={surface.area}
+                    onChange={handleAreaChange}
+                    placeholder="Площадь поверхности (м²)"
+                /></div>
+
 
             {surface.layers.map((layer: Layer, index: number) => (
                 <LayerForm

@@ -1,0 +1,9 @@
+.ConstructionFormField {
+    padding: 10px;
+    background-color: #7dad8788;
+    margin: 10px;
+    width: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}

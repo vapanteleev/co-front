@@ -1,0 +1,9 @@
+.SurfaceFormField {
+    padding: 10px;
+    background-color: #adac7d88;
+    margin: 10px;
+    width: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}

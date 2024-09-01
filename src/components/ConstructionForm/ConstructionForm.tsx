@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { ConstructionContext } from '../../providers/ConstructionProvider/ConstructionProvider';
 import SurfaceForm from '../SurfaceForm/SurfaceForm';
 import { Surface } from '../../model/dataModel';
+import styles from './ConstructionForm.module.css'
 
 const ConstructionForm: React.FC = () => {
     const { construction, setConstruction, addSurface, updateSurface, removeSurface } = useContext(ConstructionContext) as any;
@@ -17,18 +18,25 @@ const ConstructionForm: React.FC = () => {
     return (
         <div>
             <h2>Конструкция</h2>
-            <input
-                type="text"
-                value={construction.companyName}
-                onChange={handleCompanyNameChange}
-                placeholder="Название компании"
-            />
-            <input
-                type="text"
-                value={construction.projectName}
-                onChange={handleProjectNameChange}
-                placeholder="Название проекта"
-            />
+            <div className={styles.ConstructionFormField}>
+                <span>Название компании</span>
+                <input
+                    type="text"
+                    value={construction.companyName}
+                    onChange={handleCompanyNameChange}
+                    placeholder="Название компании"
+                />
+            </div>
+            <div className={styles.ConstructionFormField}>
+                <span>Название проекта</span>
+                <input
+                    type="text"
+                    value={construction.projectName}
+                    onChange={handleProjectNameChange}
+                    placeholder="Название проекта"
+                />
+            </div>
+
 
             {construction.surfaces.map((surface: Surface, index: number) => (
                 <SurfaceForm
