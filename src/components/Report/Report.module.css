@@ -1,0 +1,16 @@
+.pdfBtn {
+    background-color: rgba(84, 161, 161, 0.616);
+    margin: 10px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 9px 9px;
+    font-size: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    outline: none;
+}

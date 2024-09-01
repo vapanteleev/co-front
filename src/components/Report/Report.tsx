@@ -3,7 +3,7 @@ import { ConstructionContext } from '../../providers/ConstructionProvider/Constr
 import { Layer, Surface } from '../../model/dataModel';
 import jsPDF from 'jspdf';
 import RobotoGoyda from '../../fonts/RobotoGoyda'; // Путь к вашему шрифту
-
+import styles from './Report.module.css'
 const Report: React.FC = () => {
     const { construction } = useContext(ConstructionContext) as any;
 
@@ -129,7 +129,14 @@ const Report: React.FC = () => {
 
             <h3>Итоговая стоимость проекта: {calculateTotalProjectCost().toFixed(2)} руб.</h3>
 
-            <button onClick={generatePDF}>Скачать PDF</button>
+            <button className={styles.pdfBtn} onClick={generatePDF}>Скачать PDF
+
+                <img src="/icons8-pdf-40.png" alt="icons8-pdf-40.png" />
+
+
+            </button>
+
+
         </div>
     );
 };
