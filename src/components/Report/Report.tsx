@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { ConstructionContext } from '../../providers/ConstructionProvider/ConstructionProvider';
 import { Layer, Surface } from '../../model/dataModel';
 import jsPDF from 'jspdf';
-import RobotoGoyda from '../../fonts/RobotoGoyda'; // Путь к вашему шрифту
 import styles from './Report.module.css'
 const Report: React.FC = () => {
     const { construction } = useContext(ConstructionContext) as any;
@@ -35,10 +34,6 @@ const Report: React.FC = () => {
     const generatePDF = (): void => {
         const doc = new jsPDF();
 
-        // Load custom font supporting Cyrillic characters
-        doc.addFileToVFS('Roboto-Goyda.ttf', RobotoGoyda);
-        doc.addFont('Roboto-Goyda.ttf', 'Roboto', 'normal');
-        doc.setFont('Roboto-Goyda');
 
         const pageHeight = doc.internal.pageSize.height;
         let yOffset = 10;
