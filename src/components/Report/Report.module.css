@@ -14,3 +14,39 @@
     transition: all 0.3s ease;
     outline: none;
 }
+
+.final_report_headers1 {
+    border-radius: 10px;
+    background: #b4a5cf1c;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.final_report_headers2 {
+    background-color: rgb(130 125 173 / 49%);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.collapse_btn {
+    background-color: #b4a5cf1c;
+    margin: 10px;
+    color: black;
+    border: none;
+    border-radius: 12px;
+    padding: 9px 9px;
+    font-size: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.Surface_Painting_Cost {
+    background-color: rgba(7, 121, 7, 0.281);
+    border-radius: 10px;
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Layer } from '../../model/dataModel';
 import styles from './LayerForm.module.css'
-
+import LayersClearSharpIcon from '@mui/icons-material/LayersClearSharp';
+import LayersSharpIcon from '@mui/icons-material/LayersSharp';
 const LayerForm: React.FC<{
     layer: Layer;
     updateLayer: (layer: Layer) => void;
@@ -29,7 +30,7 @@ const LayerForm: React.FC<{
 
     return (
         <div>
-            <h4>Слой</h4>
+            <h4><LayersSharpIcon /> Слой</h4>
             <div className={styles.LayerInputField}> <span>Материал</span>
 
                 <input
@@ -76,7 +77,7 @@ const LayerForm: React.FC<{
                 />
             </div>
 
-            <button className={styles.styledButton} onClick={removeLayer}>Удалить слой</button>
+            <button className={styles.styledButton} onClick={removeLayer}><LayersClearSharpIcon /> Удалить слой </button>
         </div>
     );
 };

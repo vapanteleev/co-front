@@ -1,11 +1,14 @@
 .LayerInputField {
     padding: 10px;
     background-color: #827dad88;
-    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
     width: 400px;
     align-items: center;
     display: flex;
     justify-content: space-between;
+    border-radius: 10px;
 }
 
 

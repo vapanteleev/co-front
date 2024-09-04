@@ -1,11 +1,14 @@
 .ConstructionFormField {
     padding: 10px;
-    background-color: #7dad8788;
-    margin: 10px;
+    background-color: #8aa5ac2f;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
     width: 400px;
     align-items: center;
     display: flex;
     justify-content: space-between;
+    border-radius: 10px;
 }
 
 .ConstructionFormFieldButton {

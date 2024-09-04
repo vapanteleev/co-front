@@ -3,8 +3,33 @@ import { ConstructionContext } from '../../providers/ConstructionProvider/Constr
 import { Layer, Surface } from '../../model/dataModel';
 import jsPDF from 'jspdf';
 import styles from './Report.module.css'
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+import UnfoldLessIcon from '@mui/icons-material/UnfoldLess';
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
+import LayersIcon from '@mui/icons-material/Layers';
+import LayersClearSharpIcon from '@mui/icons-material/LayersClearSharp';
+import { Button } from '@mui/material';
 const Report: React.FC = () => {
+    const tableHeaderStyle = {
+        padding: '10px',
+        backgroundColor: '#827dad88',
+        color: 'white',
+        textAlign: 'left',
+        borderBottom: '2px solid #ddd'
+    } as any;
+
+    const tableCellStyle = {
+        padding: '10px',
+        textAlign: 'left',
+        borderBottom: '1px solid #ddd'
+    } as any;
+
     const { construction } = useContext(ConstructionContext) as any;
+    const [isCollapsed, setIsCollapsed] = React.useState<boolean>(true); // State to manage collapse/expand
+
+    const toggleCollapse = (): void => {
+        setIsCollapsed(!isCollapsed);
+    };
 
     const calculateMaterialConsumption = (layer: Layer, surfaceArea: number): number => {
         const thicknessInMeters = layer.thickness / 1e6; // Толщина в метрах
@@ -98,31 +123,72 @@ const Report: React.FC = () => {
 
     return (
         <div>
-            <h2>Итоговый отчет</h2>
-            <h3>Компания: {construction.companyName}</h3>
-            <h3>Проект: {construction.projectName}</h3>
+            <div>
+                <button className={styles.collapse_btn} onClick={toggleCollapse}>
+                    {
+                        !isCollapsed ? <>Свернуть отчет <UnfoldLessIcon /> </> : <>Развернуть итоговый отчет                 <UnfoldMoreIcon />
+                        </>
+                    }
+                </button>
+            </div>
+            {
+                !isCollapsed ?
+                    <div className='final-report-block'>
+                        <div className={styles.final_report_headers1}>
 
-            {construction.surfaces.map((surface: any, surfaceIndex: any) => (
-                <div key={surfaceIndex} style={{ marginBottom: '20px' }}>
-                    <h4>Поверхность: {surface.name}</h4>
-                    <p>Площадь: {surface.area} м²</p>
-                    <h5>Слои:</h5>
-                    {surface.layers.map((layer: any, layerIndex: any) => (
-                        <div key={layerIndex} style={{ marginBottom: '10px' }}>
-                            <p>Материал: {layer.material}</p>
-                            <p>Толщина пленки: {layer.thickness} мкм</p>
-                            <p>Разбавление: {layer.dilution}%</p>
-                            <p>Коэффициент потерь: {layer.lossFactor}%</p>
-                            <p>Цена за литр: {layer.materialPrice} руб.</p>
-                            <p>Расход материала: {calculateMaterialConsumption(layer, surface.area).toFixed(3)} л</p>
-                            <p>Стоимость слоя: {calculateMaterialCost(layer, surface.area).toFixed(2)} руб.</p>
+
+                            <h2>Final Report</h2>
+                            <h3>Company: {construction.companyName}</h3>
+                            <h3>Project: {construction.projectName}</h3>
                         </div>
-                    ))}
-                    <p><strong>Стоимость окраски поверхности: {calculateSurfaceCost(surface).toFixed(2)} руб.</strong></p>
-                </div>
-            ))}
+                        {construction.surfaces.map((surface: any, surfaceIndex: any) => (
+                            <div key={surfaceIndex} style={{ marginBottom: '20px' }}>
+                                <div className={styles.final_report_headers2}>
 
-            <h3>Итоговая стоимость проекта: {calculateTotalProjectCost().toFixed(2)} руб.</h3>
+                                    <h4>Surface: {surface.name}</h4>
+                                    <p>Area: {surface.area} m²</p>
+
+                                    <h5><LayersIcon /> Layers: </h5>
+                                </div>
+                                <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
+                                    <thead>
+                                        <tr>
+                                            <th style={tableHeaderStyle}>#</th>
+                                            <th style={tableHeaderStyle}>Material</th>
+                                            <th style={tableHeaderStyle}>Thickness (µm)</th>
+                                            <th style={tableHeaderStyle}>Dilution (%)</th>
+                                            <th style={tableHeaderStyle}>Loss Factor (%)</th>
+                                            <th style={tableHeaderStyle}>Price per Liter (RUB)</th>
+                                            <th style={tableHeaderStyle}>Material Consumption (L)</th>
+                                            <th style={tableHeaderStyle}>Layer Cost (RUB)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {surface.layers.map((layer: any, layerIndex: any) => (
+                                            <tr key={layerIndex}>
+                                                <td style={tableCellStyle}>{layerIndex + 1}</td>
+                                                <td style={tableCellStyle}>{layer.material}</td>
+                                                <td style={tableCellStyle}>{layer.thickness}</td>
+                                                <td style={tableCellStyle}>{layer.dilution}</td>
+                                                <td style={tableCellStyle}>{layer.lossFactor}</td>
+                                                <td style={tableCellStyle}>{layer.materialPrice}</td>
+                                                <td style={tableCellStyle}>{calculateMaterialConsumption(layer, surface.area).toFixed(3)}</td>
+                                                <td style={tableCellStyle}>{calculateMaterialCost(layer, surface.area).toFixed(2)}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                <div className={styles.Surface_Painting_Cost}>
+                                    <p><strong><PointOfSaleIcon /> Surface Painting Cost: {calculateSurfaceCost(surface).toFixed(2)} RUB</strong></p>
+
+                                </div>
+                            </div>
+                        ))}
+
+                        <h3>Total Project Cost: {calculateTotalProjectCost().toFixed(2)} RUB</h3>
+                    </div>
+                    : <></>
+            }
 
             <button className={styles.pdfBtn} onClick={generatePDF}>Скачать PDF
 

@@ -13,6 +13,16 @@
   }
 }
 
+.app-container {
+  text-align: center;
+}
+
+input {
+  border-radius: 8px;
+  border-color: white;
+
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,6 +42,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
