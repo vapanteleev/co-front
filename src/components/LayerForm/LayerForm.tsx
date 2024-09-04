@@ -77,7 +77,7 @@ const LayerForm: React.FC<{
                 />
             </div>
 
-            <button className={styles.styledButton} onClick={removeLayer}><LayersClearSharpIcon /> Удалить слой </button>
+            <button className={styles.styledButton} onClick={removeLayer}><LayersClearSharpIcon className={styles.LayersClearSharpIcon}/> Удалить слой </button>
         </div>
     );
 };

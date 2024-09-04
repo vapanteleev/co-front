@@ -44,6 +44,13 @@ input {
   color: #61dafb;
 }
 
+.app-header-main {
+  background: #0d446bf5;
+  border-radius: 4px;
+  padding: 10px;
+  color: white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -51,5 +58,34 @@ input {
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    /* Уменьшение базового шрифта для небольших экранов */
+  }
+
+  h1 {
+    font-size: 24px;
+    /* Уменьшение заголовков */
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button {
+    width: 100%;
+    /* Кнопки занимают всю ширину на мобильных устройствах */
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
   }
 }
