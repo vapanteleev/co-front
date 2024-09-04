@@ -71,13 +71,13 @@
     border-width: 1px;
     border-color: black;
     border-style: solid;
-    margin: 10px;
+    margin: 20px;
 }
 
 @media (max-width: 768px) {
     .LayerInputField {
 
-        width: 343px;
-
+        width: 258px;
+        display: block
     }
 }

@@ -129,7 +129,8 @@
 @media (max-width: 768px) {
     .SurfaceFormField {
 
-        width: 343px;
+        width: 289px;
+        display: block;
 
     }
 

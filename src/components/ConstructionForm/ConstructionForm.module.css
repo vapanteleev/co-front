@@ -60,7 +60,8 @@
 @media (max-width: 768px) {
     .ConstructionFormField {
 
-        width: 343px;
+        width: 289px;
+        display: block;
 
     }
 }
