@@ -64,3 +64,11 @@
 .LayersClearSharpIcon {
     vertical-align: bottom; 
 }
+
+@media (max-width: 768px) {
+    .LayerInputField {
+
+        width: 352px;
+
+    }
+}

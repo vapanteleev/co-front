@@ -63,8 +63,13 @@ input {
 
 /* Адаптивность */
 @media (max-width: 768px) {
+  .app-container {
+    /* padding: 11px !important; */
+  }
+
   body {
     font-size: 14px;
+
     /* Уменьшение базового шрифта для небольших экранов */
   }
 

@@ -56,3 +56,10 @@
 .form_icon_pdf {
     vertical-align: middle;
 }
+
+/* .ReportTable {
+   
+} */
+.ReportTableWrapper {
+    overflow-x: scroll;
+}

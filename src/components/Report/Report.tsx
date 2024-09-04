@@ -148,34 +148,36 @@ const Report: React.FC = () => {
 
                                     <h5><LayersIcon /> Layers: </h5>
                                 </div>
-                                <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
-                                    <thead>
-                                        <tr>
-                                            <th style={tableHeaderStyle}>#</th>
-                                            <th style={tableHeaderStyle}>Material</th>
-                                            <th style={tableHeaderStyle}>Thickness (µm)</th>
-                                            <th style={tableHeaderStyle}>Dilution (%)</th>
-                                            <th style={tableHeaderStyle}>Loss Factor (%)</th>
-                                            <th style={tableHeaderStyle}>Price per Liter (RUB)</th>
-                                            <th style={tableHeaderStyle}>Material Consumption (L)</th>
-                                            <th style={tableHeaderStyle}>Layer Cost (RUB)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {surface.layers.map((layer: any, layerIndex: any) => (
-                                            <tr key={layerIndex}>
-                                                <td style={tableCellStyle}>{layerIndex + 1}</td>
-                                                <td style={tableCellStyle}>{layer.material}</td>
-                                                <td style={tableCellStyle}>{layer.thickness}</td>
-                                                <td style={tableCellStyle}>{layer.dilution}</td>
-                                                <td style={tableCellStyle}>{layer.lossFactor}</td>
-                                                <td style={tableCellStyle}>{layer.materialPrice}</td>
-                                                <td style={tableCellStyle}>{calculateMaterialConsumption(layer, surface.area).toFixed(3)}</td>
-                                                <td style={tableCellStyle}>{calculateMaterialCost(layer, surface.area).toFixed(2)}</td>
+                                <div className={styles.ReportTableWrapper}>
+                                    <table className={styles.ReportTable} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
+                                        <thead>
+                                            <tr>
+                                                <th style={tableHeaderStyle}>#</th>
+                                                <th style={tableHeaderStyle}>Material</th>
+                                                <th style={tableHeaderStyle}>Thickness (µm)</th>
+                                                <th style={tableHeaderStyle}>Dilution (%)</th>
+                                                <th style={tableHeaderStyle}>Loss Factor (%)</th>
+                                                <th style={tableHeaderStyle}>Price per Liter (RUB)</th>
+                                                <th style={tableHeaderStyle}>Material Consumption (L)</th>
+                                                <th style={tableHeaderStyle}>Layer Cost (RUB)</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {surface.layers.map((layer: any, layerIndex: any) => (
+                                                <tr key={layerIndex}>
+                                                    <td style={tableCellStyle}>{layerIndex + 1}</td>
+                                                    <td style={tableCellStyle}>{layer.material}</td>
+                                                    <td style={tableCellStyle}>{layer.thickness}</td>
+                                                    <td style={tableCellStyle}>{layer.dilution}</td>
+                                                    <td style={tableCellStyle}>{layer.lossFactor}</td>
+                                                    <td style={tableCellStyle}>{layer.materialPrice}</td>
+                                                    <td style={tableCellStyle}>{calculateMaterialConsumption(layer, surface.area).toFixed(3)}</td>
+                                                    <td style={tableCellStyle}>{calculateMaterialCost(layer, surface.area).toFixed(2)}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div className={styles.Surface_Painting_Cost}>
                                     <p><strong><PointOfSaleIcon /> Surface Painting Cost: {calculateSurfaceCost(surface).toFixed(2)} RUB</strong></p>
 

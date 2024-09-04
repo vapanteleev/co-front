@@ -116,3 +116,15 @@
 .DeleteForeverIcon {
     vertical-align: bottom;
 }
+
+@media (max-width: 768px) {
+    .SurfaceFormField {
+
+        width: 352px;
+
+    }
+
+    .styledButton {
+        margin: 10px;
+    }
+}

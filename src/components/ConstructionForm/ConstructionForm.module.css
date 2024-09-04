@@ -48,3 +48,11 @@
     margin-right: 3px;
     /* padding: 3px */
 }
+
+@media (max-width: 768px) {
+    .ConstructionFormField {
+
+        width: 352px;
+
+    }
+}
