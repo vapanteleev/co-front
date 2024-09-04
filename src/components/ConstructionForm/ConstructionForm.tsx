@@ -17,7 +17,7 @@ const ConstructionForm: React.FC = () => {
 
     return (
         <div>
-            <h2>Конструкция</h2>
+            <h2><img className='form-icon' src="icons8-sts-crane-50.png" alt="Конструкция" /> Конструкция</h2>
             <div className={styles.ConstructionFormField}>
                 <span>Название компании</span>
                 <input

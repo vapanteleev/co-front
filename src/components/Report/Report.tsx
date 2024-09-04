@@ -126,7 +126,7 @@ const Report: React.FC = () => {
             <div>
                 <button className={styles.collapse_btn} onClick={toggleCollapse}>
                     {
-                        !isCollapsed ? <>Свернуть отчет <UnfoldLessIcon /> </> : <>Развернуть итоговый отчет                 <UnfoldMoreIcon />
+                        !isCollapsed ? <>Свернуть отчет <UnfoldLessIcon /> </> : <>Развернуть итоговый отчет                 <UnfoldMoreIcon className={styles.UnfoldMoreIcon} />
                         </>
                     }
                 </button>

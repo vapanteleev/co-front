@@ -2,7 +2,6 @@ import React from 'react';
 import LayerForm from '../LayerForm/LayerForm';
 import { Surface, Layer } from '../../model/dataModel';
 import styles from './SurfaceForm.module.css'
-import LayersClearSharpIcon from '@mui/icons-material/LayersClearSharp';
 import LayersSharpIcon from '@mui/icons-material/LayersSharp';
 const SurfaceForm: React.FC<{
     surface: Surface;
@@ -34,7 +33,7 @@ const SurfaceForm: React.FC<{
 
     return (
         <div>
-            <h3><img src="/icons8-surface-50 (1).png" alt="" />
+            <h3><img className='form-icon' src="/icons8-surface-50 (1).png" alt="" />
                 Поверхность</h3>
             <div className={styles.SurfaceFormField}>
                 <span>Название поверхности</span>
@@ -64,8 +63,9 @@ const SurfaceForm: React.FC<{
                 />
             ))}
 
-            <button className={styles.styledButtonAdd} onClick={addLayer}><LayersSharpIcon /> Добавить слой</button>
-            <button className={styles.styledButton} onClick={removeSurface}>Удалить поверхность</button>
+            <button className={styles.styledButtonAdd} onClick={addLayer}><LayersSharpIcon className={styles.Add_Layer_Icon} /> Добавить слой</button>
+            <button className={styles.styledButton} onClick={removeSurface}>
+                Удалить поверхность</button>
         </div>
     );
 };
