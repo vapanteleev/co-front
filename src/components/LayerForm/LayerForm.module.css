@@ -1,6 +1,6 @@
 .LayerInputField {
     padding: 10px;
-    background-color: #827dad88;
+    background-color: #827dad28;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -15,7 +15,7 @@
 .styledButton {
     margin: 10px;
 
-    background-color: #6200ea;
+    background-color: #b33f3f9d;
     /* Base color */
     color: white;
     /* Text color */
@@ -53,7 +53,7 @@
 }
 
 .styledButton:active {
-    background-color: #6200ea;
+    background-color: #6200ea41;
     /* Original color on click */
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     /* Original shadow on click */
@@ -62,7 +62,16 @@
 }
 
 .LayersClearSharpIcon {
-    vertical-align: bottom; 
+    vertical-align: bottom;
+}
+
+.LayerFormContainer {
+    border-radius: 5px;
+    background: #fff8f048;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    margin: 10px;
 }
 
 @media (max-width: 768px) {

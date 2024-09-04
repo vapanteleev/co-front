@@ -49,6 +49,14 @@
     /* padding: 3px */
 }
 
+.ConstructionFormContainer {
+    border-radius: 5px;
+    background: #f0fff963;
+    border-width: 1px;
+    border-color: black;
+    border-style: dashed;
+}
+
 @media (max-width: 768px) {
     .ConstructionFormField {
 

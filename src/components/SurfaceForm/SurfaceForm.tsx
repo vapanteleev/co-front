@@ -33,7 +33,7 @@ const SurfaceForm: React.FC<{
     };
 
     return (
-        <div>
+        <div className={styles.SurfaceFormContainer}>
             <h3><img className='form-icon' src="/icons8-surface-50 (1).png" alt="" />
                 Поверхность</h3>
             <div className={styles.SurfaceFormField}>

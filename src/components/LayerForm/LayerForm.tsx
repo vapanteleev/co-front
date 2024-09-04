@@ -29,7 +29,7 @@ const LayerForm: React.FC<{
     };
 
     return (
-        <div>
+        <div className={styles.LayerFormContainer}>
             <h4><LayersSharpIcon /> Слой</h4>
             <div className={styles.LayerInputField}> <span>Материал</span>
 
@@ -77,7 +77,7 @@ const LayerForm: React.FC<{
                 />
             </div>
 
-            <button className={styles.styledButton} onClick={removeLayer}><LayersClearSharpIcon className={styles.LayersClearSharpIcon}/> Удалить слой </button>
+            <button className={styles.styledButton} onClick={removeLayer}><LayersClearSharpIcon className={styles.LayersClearSharpIcon} /> Удалить слой </button>
         </div>
     );
 };

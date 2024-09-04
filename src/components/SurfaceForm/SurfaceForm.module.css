@@ -1,6 +1,6 @@
 .SurfaceFormField {
     padding: 10px;
-    background-color: #adac7d88;
+    background-color: #adac7d38;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -9,6 +9,15 @@
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
+}
+
+.SurfaceFormContainer {
+    border-radius: 5px;
+    background: #fffff085;
+    border-width: 1px;
+    border-color: black;
+    border-style: dotted;
+    margin: 10px;
 }
 
 .styledButtonAdd {
