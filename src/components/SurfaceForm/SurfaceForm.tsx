@@ -72,7 +72,7 @@ const SurfaceForm: React.FC<{
 
                 onClick={removeSurface}>
                 <DeleteForeverIcon className={styles.DeleteForeverIcon} />
-                Удалить поверхность</button>
+                Удалить поверхность {surface?.name}</button>
         </div >
     );
 };
