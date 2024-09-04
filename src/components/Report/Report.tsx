@@ -179,7 +179,7 @@ const Report: React.FC = () => {
                                     </table>
                                 </div>
                                 <div className={styles.Surface_Painting_Cost}>
-                                    <p><strong><PointOfSaleIcon /> Surface Painting Cost: {calculateSurfaceCost(surface).toFixed(2)} RUB</strong></p>
+                                    <p><PointOfSaleIcon /> Surface Painting Cost: {calculateSurfaceCost(surface).toFixed(2)} RUB</p>
 
                                 </div>
                             </div>

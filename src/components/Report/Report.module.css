@@ -45,8 +45,12 @@
 }
 
 .Surface_Painting_Cost {
-    background-color: rgba(7, 121, 7, 0.281);
-    border-radius: 10px;
+    border-radius: 5px;
+    background-color: rgb(130 125 173 / 49%);
+    margin: 16px;
+    padding: 8px;
+    font-weight: 600;
+
 }
 
 .UnfoldMoreIcon {
