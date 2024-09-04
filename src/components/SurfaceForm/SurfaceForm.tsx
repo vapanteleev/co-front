@@ -5,10 +5,11 @@ import styles from './SurfaceForm.module.css'
 import LayersSharpIcon from '@mui/icons-material/LayersSharp';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const SurfaceForm: React.FC<{
+    SurfaceIndex: number;
     surface: Surface;
     updateSurface: (surface: Surface) => void;
     removeSurface: () => void;
-}> = ({ surface, updateSurface, removeSurface }) => {
+}> = ({ SurfaceIndex, surface, updateSurface, removeSurface }) => {
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateSurface({ ...surface, name: e.target.value });
     };
@@ -35,7 +36,7 @@ const SurfaceForm: React.FC<{
     return (
         <div className={styles.SurfaceFormContainer}>
             <h3><img className='form-icon' src="/icons8-surface-50 (1).png" alt="" />
-                Поверхность</h3>
+                Поверхность №{SurfaceIndex + 1}</h3>
             <div className={styles.SurfaceFormField}>
                 <span>Название поверхности</span>
                 <input
@@ -57,6 +58,8 @@ const SurfaceForm: React.FC<{
 
             {surface.layers.map((layer: Layer, index: number) => (
                 <LayerForm
+                    parentSurface={surface.name}
+                    LayerIndex={index}
                     key={index}
                     layer={layer}
                     updateLayer={(updatedLayer: any) => updateLayer(index, updatedLayer)}

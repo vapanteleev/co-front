@@ -4,10 +4,12 @@ import styles from './LayerForm.module.css'
 import LayersClearSharpIcon from '@mui/icons-material/LayersClearSharp';
 import LayersSharpIcon from '@mui/icons-material/LayersSharp';
 const LayerForm: React.FC<{
+    parentSurface: string;
+    LayerIndex: number;
     layer: Layer;
     updateLayer: (layer: Layer) => void;
     removeLayer: () => void;
-}> = ({ layer, updateLayer, removeLayer }) => {
+}> = ({ parentSurface, LayerIndex, layer, updateLayer, removeLayer }) => {
     const handleMaterialChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateLayer({ ...layer, material: e.target.value });
     };
@@ -30,7 +32,7 @@ const LayerForm: React.FC<{
 
     return (
         <div className={styles.LayerFormContainer}>
-            <h4><LayersSharpIcon /> Слой</h4>
+            <h4><LayersSharpIcon /> Слой №{LayerIndex + 1} для поверхности {parentSurface}</h4>
             <div className={styles.LayerInputField}> <span>Материал</span>
 
                 <input

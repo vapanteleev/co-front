@@ -41,6 +41,7 @@ const ConstructionForm: React.FC = () => {
 
             {construction.surfaces.map((surface: Surface, index: number) => (
                 <SurfaceForm
+                    SurfaceIndex={index}
                     key={index}
                     surface={surface}
                     updateSurface={(updatedSurface: any) => updateSurface(index, updatedSurface)}
