@@ -124,7 +124,7 @@ const Report: React.FC = () => {
             <div>
                 <button className={styles.collapse_btn} onClick={toggleCollapse}>
                     {
-                        !isCollapsed ? <>Свернуть отчет <UnfoldLessIcon /> </> : <>Развернуть итоговый отчет                 <UnfoldMoreIcon className={styles.UnfoldMoreIcon} />
+                        !isCollapsed ? <>Свернуть отчет <UnfoldLessIcon /> </> : <> Итоговый отчет                 <UnfoldMoreIcon className={styles.UnfoldMoreIcon} />
                         </>
                     }
                 </button>
@@ -186,16 +186,18 @@ const Report: React.FC = () => {
                         ))}
 
                         <h3>Total Project Cost: {calculateTotalProjectCost().toFixed(2)} RUB</h3>
+                        <div className={styles.pdfBtn} onClick={generatePDF}>Скачать PDF
+
+                            <img className={styles.form_icon_pdf} src="/icons8-pdf-40.png" alt="icons8-pdf-40.png" />
+
+
+                        </div>
                     </div>
                     : <></>
+
             }
 
-            <div className={styles.pdfBtn} onClick={generatePDF}>Скачать PDF
 
-                <img className={styles.form_icon_pdf} src="/icons8-pdf-40.png" alt="icons8-pdf-40.png" />
-
-
-            </div>
 
 
         </div>
