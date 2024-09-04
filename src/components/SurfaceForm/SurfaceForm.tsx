@@ -3,6 +3,7 @@ import LayerForm from '../LayerForm/LayerForm';
 import { Surface, Layer } from '../../model/dataModel';
 import styles from './SurfaceForm.module.css'
 import LayersSharpIcon from '@mui/icons-material/LayersSharp';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const SurfaceForm: React.FC<{
     surface: Surface;
     updateSurface: (surface: Surface) => void;
@@ -64,9 +65,12 @@ const SurfaceForm: React.FC<{
             ))}
 
             <button className={styles.styledButtonAdd} onClick={addLayer}><LayersSharpIcon className={styles.Add_Layer_Icon} /> Добавить слой</button>
-            <button className={styles.styledButton} onClick={removeSurface}>
+            <button className={styles.styledButton}
+
+                onClick={removeSurface}>
+                <DeleteForeverIcon className={styles.DeleteForeverIcon} />
                 Удалить поверхность</button>
-        </div>
+        </div >
     );
 };
 

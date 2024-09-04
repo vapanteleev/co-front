@@ -3,6 +3,7 @@ import { ConstructionContext } from '../../providers/ConstructionProvider/Constr
 import SurfaceForm from '../SurfaceForm/SurfaceForm';
 import { Surface } from '../../model/dataModel';
 import styles from './ConstructionForm.module.css'
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const ConstructionForm: React.FC = () => {
     const { construction, setConstruction, addSurface, updateSurface, removeSurface } = useContext(ConstructionContext) as any;
@@ -47,7 +48,12 @@ const ConstructionForm: React.FC = () => {
                 />
             ))}
 
-            <button className={styles.ConstructionFormFieldButton} onClick={() => addSurface({ name: '', area: 0, layers: [] })}>Добавить поверхность</button>
+            <button
+                className={styles.ConstructionFormFieldButton}
+                onClick={() => addSurface({ name: '', area: 0, layers: [] })}>
+                <AddBoxIcon className={styles.AddBoxIcon} />
+                Добавить поверхность
+            </button>
         </div>
     );
 };

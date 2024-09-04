@@ -7,8 +7,6 @@ import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import LayersIcon from '@mui/icons-material/Layers';
-import LayersClearSharpIcon from '@mui/icons-material/LayersClearSharp';
-import { Button } from '@mui/material';
 const Report: React.FC = () => {
     const tableHeaderStyle = {
         padding: '10px',
@@ -190,12 +188,12 @@ const Report: React.FC = () => {
                     : <></>
             }
 
-            <button className={styles.pdfBtn} onClick={generatePDF}>Скачать PDF
+            <div className={styles.pdfBtn} onClick={generatePDF}>Скачать PDF
 
-                <img src="/icons8-pdf-40.png" alt="icons8-pdf-40.png" />
+                <img className={styles.form_icon_pdf} src="/icons8-pdf-40.png" alt="icons8-pdf-40.png" />
 
 
-            </button>
+            </div>
 
 
         </div>
