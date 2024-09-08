@@ -83,71 +83,7 @@ const Report: React.FC = () => {
         }, 0);
     };
 
-    // Generate PDF report
-    const generatePDF = (): void => {
-        const doc = new jsPDF();
 
-
-        const pageHeight = doc.internal.pageSize.height;
-        let yOffset = 10;
-
-        doc.setFontSize(12);
-        doc.text('Final Report', 10, yOffset);
-        yOffset += 10;
-        doc.text(`Company: ${construction.companyName}`, 10, yOffset);
-        yOffset += 10;
-        doc.text(`Project: ${construction.projectName}`, 10, yOffset);
-        yOffset += 10;
-
-        construction.surfaces.forEach((surface: any, surfaceIndex: any) => {
-            if (yOffset + 10 > pageHeight) {
-                doc.addPage();
-                yOffset = 10;
-            }
-            doc.text(`Surface: ${surface.name}`, 10, yOffset);
-            yOffset += 10;
-            doc.text(`Area: ${surface.area} m²`, 10, yOffset);
-            yOffset += 10;
-
-            surface.layers.forEach((layer: any, layerIndex: any) => {
-                if (yOffset + 10 > pageHeight) {
-                    doc.addPage();
-                    yOffset = 10;
-                }
-                doc.text(`Layer ${layerIndex + 1}:`, 10, yOffset);
-                yOffset += 10;
-                doc.text(`Material: ${layer.material}`, 20, yOffset);
-                yOffset += 10;
-                doc.text(`Film Thickness: ${layer.thickness} µm`, 20, yOffset);
-                yOffset += 10;
-                doc.text(`Dilution: ${layer.dilution}%`, 20, yOffset);
-                yOffset += 10;
-                doc.text(`Loss Factor: ${layer.lossFactor}%`, 20, yOffset);
-                yOffset += 10;
-                doc.text(`Price per Liter: ${layer.materialPrice} RUB`, 20, yOffset);
-                yOffset += 10;
-                doc.text(`Material Consumption: ${calculateMaterialConsumption(layer, surface.area).toFixed(3)} L`, 20, yOffset);
-                yOffset += 10;
-                doc.text(`Layer Cost: ${calculateMaterialCost(layer, surface.area).toFixed(2)} RUB`, 20, yOffset);
-                yOffset += 10;
-            });
-
-            if (yOffset + 10 > pageHeight) {
-                doc.addPage();
-                yOffset = 10;
-            }
-            doc.text(`Surface Painting Cost: ${calculateSurfaceCost(surface).toFixed(2)} RUB`, 10, yOffset);
-            yOffset += 20;
-        });
-
-        if (yOffset + 10 > pageHeight) {
-            doc.addPage();
-            yOffset = 10;
-        }
-        doc.text(`Total Project Cost: ${calculateTotalProjectCost().toFixed(2)} RUB`, 10, yOffset);
-
-        doc.save('Report.pdf');
-    };
 
     return (
         <div>
