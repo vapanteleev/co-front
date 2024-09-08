@@ -45,10 +45,10 @@ input {
 }
 
 .app-header-main {
-  background: #0d446bf5;
+  /* background: #0065b2; */
   border-radius: 4px;
   padding: 10px;
-  color: white;
+  color: #0065b2;
 }
 
 @keyframes App-logo-spin {
@@ -100,3 +100,5 @@ textarea {
 .logo_primatek {
   width: 60px;
 }
+
+.header_span {}

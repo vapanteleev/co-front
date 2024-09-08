@@ -9,13 +9,7 @@ import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import LayersIcon from '@mui/icons-material/Layers';
 import html2canvas from 'html2canvas';
 const Report: React.FC = () => {
-    const tableHeaderStyle = {
-        padding: '10px',
-        backgroundColor: '#827dad88',
-        color: 'white',
-        textAlign: 'left',
-        borderBottom: '2px solid #ddd'
-    } as any;
+
 
     const tableCellStyle = {
         padding: '10px',
@@ -99,8 +93,9 @@ const Report: React.FC = () => {
                 !isCollapsed ?
                     <>
                         <div ref={reportRef} className='final-report-block'>
+                            <div className='logo_primatek'><img className='logo_primatek' src="/logo_peimatek.png" alt="logo_peimatek" /></div>
+
                             <div className={styles.final_report_headers1}>
-                                <div className='logo_primatek'><img className='logo_primatek' src="/logo_peimatek.png" alt="logo_peimatek" /></div>
 
                                 <h2>Final Report</h2>
                                 <h3>Company: {construction.companyName}</h3>
@@ -119,14 +114,14 @@ const Report: React.FC = () => {
                                         <table className={styles.ReportTable} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
                                             <thead>
                                                 <tr>
-                                                    <th style={tableHeaderStyle}>#</th>
-                                                    <th style={tableHeaderStyle}>Material</th>
-                                                    <th style={tableHeaderStyle}>Thickness (µm)</th>
-                                                    <th style={tableHeaderStyle}>Dilution (%)</th>
-                                                    <th style={tableHeaderStyle}>Loss Factor (%)</th>
-                                                    <th style={tableHeaderStyle}>Price per Liter (RUB)</th>
-                                                    <th style={tableHeaderStyle}>Material Consumption (L)</th>
-                                                    <th style={tableHeaderStyle}>Layer Cost (RUB)</th>
+                                                    <th className={styles.tableHeaderStyle}>#</th>
+                                                    <th className={styles.tableHeaderStyle}>Material</th>
+                                                    <th className={styles.tableHeaderStyle}>Thickness (µm)</th>
+                                                    <th className={styles.tableHeaderStyle}>Dilution (%)</th>
+                                                    <th className={styles.tableHeaderStyle}>Loss Factor (%)</th>
+                                                    <th className={styles.tableHeaderStyle}>Price per Liter (RUB)</th>
+                                                    <th className={styles.tableHeaderStyle}>Material Consumption (L)</th>
+                                                    <th className={styles.tableHeaderStyle}>Layer Cost (RUB)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

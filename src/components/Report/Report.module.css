@@ -15,42 +15,59 @@
 
 .final_report_headers1 {
     border-radius: 10px;
-    background: #b4a5cf1c;
+    background: #0065b2;
     padding: 10px;
     margin-bottom: 5px;
+    color: white;
+    background-image: url(/public/default_pattern.png);
 }
 
 .final_report_headers2 {
-    background-color: rgb(130 125 173 / 49%);
+    background-color: #0065b2;
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 10px;
+    color: white;
+    background-image: url(/public/default_pattern.png);
 }
 
 .collapse_btn {
-    background-color: #b4a5cf1c;
+    background-color: #0065b2;
+    border-radius: 10px;
+
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    padding: 16px 30px;
+    background-image: url(/public/default_pattern.png);
+    background-position: 0px 0;
+    transition: background-position 3s ease-in-out 0s;
     margin: 10px;
-    color: black;
-    border: none;
-    border-radius: 12px;
-    padding: 9px 9px;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    outline: none;
 }
 
 .Surface_Painting_Cost {
     border-radius: 5px;
-    background-color: rgb(130 125 173 / 49%);
+    background-color: #0065b2;
+
+    background-image: url(/public/default_pattern.png);
+
     margin: 16px;
     padding: 8px;
     font-weight: 600;
-
+    color: white
 }
 
 .UnfoldMoreIcon {
@@ -66,4 +83,14 @@
 } */
 .ReportTableWrapper {
     overflow-x: scroll;
+}
+
+.tableHeaderStyle {
+    padding: 10px;
+    background-color: #0065b2;
+    color: white;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    background-image: url(/public/default_pattern.png);
+
 }
