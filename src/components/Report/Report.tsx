@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ConstructionContext } from '../../providers/ConstructionProvider/ConstructionProvider';
 import { Layer, Surface } from '../../model/dataModel';
 import jsPDF from 'jspdf';
@@ -7,6 +7,7 @@ import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import LayersIcon from '@mui/icons-material/Layers';
+import html2canvas from 'html2canvas';
 const Report: React.FC = () => {
     const tableHeaderStyle = {
         padding: '10px',
@@ -27,6 +28,35 @@ const Report: React.FC = () => {
 
     const toggleCollapse = (): void => {
         setIsCollapsed(!isCollapsed);
+    };
+    const reportRef = useRef() as any; // Создаем реф для секции с отчетом
+
+    const generatePDF1 = () => {
+        const input = reportRef.current;
+
+        html2canvas(input, { scale: 2 }).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 210; // Ширина A4 в mm
+            const pageHeight = 297; // Высота A4 в mm
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            // Первая страница
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+
+            // Остальные страницы
+            while (heightLeft > 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+
+            pdf.save('report.pdf');
+        });
     };
 
     const calculateMaterialConsumption = (layer: Layer, surfaceArea: number): number => {
@@ -131,68 +161,71 @@ const Report: React.FC = () => {
             </div>
             {
                 !isCollapsed ?
-                    <div className='final-report-block'>
-                        <div className={styles.final_report_headers1}>
+                    <>
+                        <div ref={reportRef} className='final-report-block'>
+                            <div className={styles.final_report_headers1}>
+                                <div className='logo_primatek'><img className='logo_primatek' src="/logo_peimatek.png" alt="logo_peimatek" /></div>
 
-
-                            <h2>Final Report</h2>
-                            <h3>Company: {construction.companyName}</h3>
-                            <h3>Project: {construction.projectName}</h3>
-                        </div>
-                        {construction.surfaces.map((surface: any, surfaceIndex: any) => (
-                            <div key={surfaceIndex} style={{ marginBottom: '20px' }}>
-                                <div className={styles.final_report_headers2}>
-
-                                    <h4>Surface: {surface.name}</h4>
-                                    <p>Area: {surface.area} m²</p>
-
-                                    <h5><LayersIcon /> Layers: </h5>
-                                </div>
-                                <div className={styles.ReportTableWrapper}>
-                                    <table className={styles.ReportTable} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
-                                        <thead>
-                                            <tr>
-                                                <th style={tableHeaderStyle}>#</th>
-                                                <th style={tableHeaderStyle}>Material</th>
-                                                <th style={tableHeaderStyle}>Thickness (µm)</th>
-                                                <th style={tableHeaderStyle}>Dilution (%)</th>
-                                                <th style={tableHeaderStyle}>Loss Factor (%)</th>
-                                                <th style={tableHeaderStyle}>Price per Liter (RUB)</th>
-                                                <th style={tableHeaderStyle}>Material Consumption (L)</th>
-                                                <th style={tableHeaderStyle}>Layer Cost (RUB)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {surface.layers.map((layer: any, layerIndex: any) => (
-                                                <tr key={layerIndex}>
-                                                    <td style={tableCellStyle}>{layerIndex + 1}</td>
-                                                    <td style={tableCellStyle}>{layer.material}</td>
-                                                    <td style={tableCellStyle}>{layer.thickness}</td>
-                                                    <td style={tableCellStyle}>{layer.dilution}</td>
-                                                    <td style={tableCellStyle}>{layer.lossFactor}</td>
-                                                    <td style={tableCellStyle}>{layer.materialPrice}</td>
-                                                    <td style={tableCellStyle}>{calculateMaterialConsumption(layer, surface.area).toFixed(3)}</td>
-                                                    <td style={tableCellStyle}>{calculateMaterialCost(layer, surface.area).toFixed(2)}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className={styles.Surface_Painting_Cost}>
-                                    <p><PointOfSaleIcon /> Surface Painting Cost: {calculateSurfaceCost(surface).toFixed(2)} RUB</p>
-
-                                </div>
+                                <h2>Final Report</h2>
+                                <h3>Company: {construction.companyName}</h3>
+                                <h3>Project: {construction.projectName}</h3>
                             </div>
-                        ))}
+                            {construction.surfaces.map((surface: any, surfaceIndex: any) => (
+                                <div key={surfaceIndex} style={{ marginBottom: '20px' }}>
+                                    <div className={styles.final_report_headers2}>
 
-                        <h3>Total Project Cost: {calculateTotalProjectCost().toFixed(2)} RUB</h3>
-                        <div className={styles.pdfBtn} onClick={generatePDF}>Скачать PDF
+                                        <h4>Surface: {surface.name}</h4>
+                                        <p>Area: {surface.area} m²</p>
+
+                                        <h5><LayersIcon /> Layers: </h5>
+                                    </div>
+                                    <div className={styles.ReportTableWrapper}>
+                                        <table className={styles.ReportTable} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
+                                            <thead>
+                                                <tr>
+                                                    <th style={tableHeaderStyle}>#</th>
+                                                    <th style={tableHeaderStyle}>Material</th>
+                                                    <th style={tableHeaderStyle}>Thickness (µm)</th>
+                                                    <th style={tableHeaderStyle}>Dilution (%)</th>
+                                                    <th style={tableHeaderStyle}>Loss Factor (%)</th>
+                                                    <th style={tableHeaderStyle}>Price per Liter (RUB)</th>
+                                                    <th style={tableHeaderStyle}>Material Consumption (L)</th>
+                                                    <th style={tableHeaderStyle}>Layer Cost (RUB)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {surface.layers.map((layer: any, layerIndex: any) => (
+                                                    <tr key={layerIndex}>
+                                                        <td style={tableCellStyle}>{layerIndex + 1}</td>
+                                                        <td style={tableCellStyle}>{layer.material}</td>
+                                                        <td style={tableCellStyle}>{layer.thickness}</td>
+                                                        <td style={tableCellStyle}>{layer.dilution}</td>
+                                                        <td style={tableCellStyle}>{layer.lossFactor}</td>
+                                                        <td style={tableCellStyle}>{layer.materialPrice}</td>
+                                                        <td style={tableCellStyle}>{calculateMaterialConsumption(layer, surface.area).toFixed(3)}</td>
+                                                        <td style={tableCellStyle}>{calculateMaterialCost(layer, surface.area).toFixed(2)}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div className={styles.Surface_Painting_Cost}>
+                                        <p><PointOfSaleIcon /> Surface Painting Cost: {calculateSurfaceCost(surface).toFixed(2)} RUB</p>
+
+                                    </div>
+                                </div>
+                            ))}
+
+                            <h3>Total Project Cost: {calculateTotalProjectCost().toFixed(2)} RUB</h3>
+
+                        </div>
+                        <div className={styles.pdfBtn} onClick={generatePDF1}>Скачать PDF
 
                             <img className={styles.form_icon_pdf} src="/icons8-pdf-40.png" alt="icons8-pdf-40.png" />
 
 
                         </div>
-                    </div>
+                    </>
                     : <></>
 
             }
